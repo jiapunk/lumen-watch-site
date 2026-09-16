@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/branding/banner.png" alt="LUMEN — 戴在手上的智慧 Agent" width="100%" />
+
 # LUMEN
 
 ### 戴在手上的智慧 Agent
@@ -7,6 +9,7 @@
 自然對話、即時資訊、裝置控制與個人記憶 ——
 以一個溫暖安靜的介面，讓 ESP32 手錶成為隨身的行動 Agent。
 
+[![Live](https://img.shields.io/badge/─_互動展示_線上直播-jiapunk.github.io%2Flumen--watch--site-2EA043?logo=github)](https://jiapunk.github.io/lumen-watch-site/)
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -17,9 +20,21 @@
 
 ---
 
+## 🌐 線上體驗
+
+**網站已部署上線，可直接操作：[https://jiapunk.github.io/lumen-watch-site/](https://jiapunk.github.io/lumen-watch-site/)**
+
 這是 **Lumen Agent Watch** 的產品介紹網站 —— 不只是靜態頁面，而是一個**可操作的互動展示**：
 訪客可以直接點選手錶的各種狀態（待命、聆聽、理解、回覆、控制、核准、離線），
 在瀏覽器裡預覽腕上 Agent 的完整互動流程。
+
+## 介面預覽
+
+| 待命 | 回覆中（語音與字幕同步） |
+|---|---|
+| ![待命](docs/screenshots/hero.png) | ![回覆中](docs/screenshots/state-reply.png) |
+| **控制中心** | **聆聽中** |
+| ![控制中心](docs/screenshots/state-control.png) | ![聆聽中](docs/screenshots/state-listen.png) |
 
 ## 網站內容
 
@@ -58,8 +73,16 @@ stateDiagram-v2
 ```sh
 npm install
 npm run dev     # 本機開發
-npm run build   # 生產建置
+npm run build   # 生產建置（vinext）
 ```
+
+**GitHub Pages 部署**（靜態匯出）：
+
+```sh
+PAGES_BUILD=1 npx next build   # 輸出 out/（basePath=/lumen-watch-site）
+```
+
+`gh-pages` 分支即為靜態匯出結果，由 GitHub Pages 服務。
 
 ## 相關 Repo
 
