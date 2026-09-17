@@ -1,15 +1,17 @@
 <div align="center">
 
-<img src="docs/branding/banner.png" alt="LUMEN — 戴在手上的智慧 Agent" width="100%" />
+<img src="docs/branding/banner.png" alt="LUMEN — an intelligent agent on your wrist" width="100%" />
 
 # LUMEN
 
-### 戴在手上的智慧 Agent
+### An intelligent agent, worn on your wrist
 
-自然對話、即時資訊、裝置控制與個人記憶 ——
-以一個溫暖安靜的介面，讓 ESP32 手錶成為隨身的行動 Agent。
+Natural conversation, real-time information, device control and personal memory —
+a warm, quiet interface that turns an ESP32 watch into your on-the-go agent.
 
-[![Live](https://img.shields.io/badge/互動展示_線上直播-jiapunk.github.io%2Flumen--watch--site-2EA043?logo=github)](https://jiapunk.github.io/lumen-watch-site/)
+[**English**](README.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md)
+
+[![Live demo](https://img.shields.io/badge/Live_demo-jiapunk.github.io%2Flumen--watch--site-2EA043?logo=github)](https://jiapunk.github.io/lumen-watch-site/)
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -20,74 +22,75 @@
 
 ---
 
-## 🌐 線上體驗
+This is the product introduction site for the **Lumen Agent Watch** — not a static
+brochure, but an **operable interactive demo**: visitors can click through the watch's
+states (idle, listen, think, reply, control, confirm, offline) and preview the full
+wrist-agent interaction flow right in the browser.
 
-**網站已部署上線，可直接操作：[https://jiapunk.github.io/lumen-watch-site/](https://jiapunk.github.io/lumen-watch-site/)**
+## 🌐 Try it live
 
-這是 **Lumen Agent Watch** 的產品介紹網站 —— 不只是靜態頁面，而是一個**可操作的互動展示**：
-訪客可以直接點選手錶的各種狀態（待命、聆聽、理解、回覆、控制、核准、離線），
-在瀏覽器裡預覽腕上 Agent 的完整互動流程。
+**The site is deployed and fully interactive: [https://jiapunk.github.io/lumen-watch-site/](https://jiapunk.github.io/lumen-watch-site/)**
 
-## 介面預覽
+## Interface preview
 
-| 待命 | 回覆中（語音與字幕同步） |
+| Idle | Replying (voice + captions in sync) |
 |---|---|
-| ![待命](docs/screenshots/hero.png) | ![回覆中](docs/screenshots/state-reply.png) |
-| **控制中心** | **聆聽中** |
-| ![控制中心](docs/screenshots/state-control.png) | ![聆聽中](docs/screenshots/state-listen.png) |
+| ![Idle](docs/screenshots/hero.png) | ![Replying](docs/screenshots/state-reply.png) |
+| **Control center** | **Listening** |
+| ![Control center](docs/screenshots/state-control.png) | ![Listening](docs/screenshots/state-listen.png) |
 
-## 網站內容
+## What's on the site
 
-| 區塊 | 說明 |
+| Section | Description |
 |---|---|
-| **互動手錶展示** | 完整模擬七種手錶狀態：待命時鐘、觸控說話、即時字幕回覆、控制中心（音量 / Wi-Fi / 重啟）、腕上二次核准、離線恢復流程 |
-| **01 / 能力** | 三大核心：即時可打斷語音、從回答走向行動的 Agent、認得人的個人記憶 |
-| **02 / 架構** | Lumen Watch（Edge）× Agent Gateway（Tokyo · Hong Kong）× 模型與工具的分層架構圖 |
-| **03 / 信任** | 腕上確認、斷線恢復、省電設計的產品原則 |
-| **產品願景** | 「科技不需要看起來冰冷，也不必讓人學會如何使用」 |
+| **Interactive watch demo** | Simulates all seven watch states: idle clock, tap-to-talk, live caption replies, control center (volume / Wi-Fi / restart), on-wrist confirmation, offline recovery |
+| **01 / Capabilities** | Three pillars: interruptible real-time voice, agents that act (not just answer), speaker-aware personal memory |
+| **02 / Architecture** | Layered map: Lumen Watch (edge) × Agent Gateway (Tokyo · Hong Kong) × models & tools |
+| **03 / Trust** | Product principles: on-wrist confirmation, offline recovery, power-aware design |
+| **Vision** | "Technology doesn't need to look cold, and you shouldn't have to learn how to use it." |
 
-## 互動展示的狀態機
+## The demo's state machine
 
 ```mermaid
 stateDiagram-v2
-    [*] --> 待命
-    待命 --> 聆聽: 輕觸開始說話
-    聆聽 --> 理解: 完成
-    理解 --> 回覆: Agent 回答
-    理解 --> 聆聽: 隨時打斷
-    待命 --> 控制: 下滑 / 輕觸錶冠
-    控制 --> 核准: 重新啟動手錶
-    核准 --> 待命: 確認 / 自動取消
-    控制 --> 離線: 管理 Wi-Fi
-    離線 --> 待命: 找回連線
+    [*] --> Idle
+    Idle --> Listen: tap to talk
+    Listen --> Think: done
+    Think --> Reply: agent answers
+    Think --> Listen: interrupt anytime
+    Idle --> Control: swipe down / crown
+    Control --> Confirm: restart watch
+    Confirm --> Idle: confirm / auto-cancel
+    Control --> Offline: manage Wi-Fi
+    Offline --> Idle: reconnected
 ```
 
-## 技術
+## Technology
 
-- **Next.js 16**（App Router）+ **React 19** + **TypeScript 5.9**
-- 純前端、零依賴動畫（CSS `flow-field`、`signal-bars` 均為手刻）
-- `zh-Hant` 語系、Geist 字體、無障礙標記（`aria-pressed` / `aria-label` / `role="img"`）
+- **Next.js 16** (App Router) + **React 19** + **TypeScript 5.9**
+- Pure front-end, zero-dependency animations (the CSS `flow-field` and `signal-bars` are hand-crafted)
+- `zh-Hant` locale, Geist typefaces, accessibility markup (`aria-pressed` / `aria-label` / `role="img"`)
 
-## 開發
+## Development
 
 ```sh
 npm install
-npm run dev     # 本機開發
-npm run build   # 生產建置（vinext）
+npm run dev     # local development
+npm run build   # production build (vinext)
 ```
 
-**GitHub Pages 部署**（靜態匯出）：
+**GitHub Pages deployment** (static export):
 
 ```sh
-PAGES_BUILD=1 npx next build   # 輸出 out/（basePath=/lumen-watch-site）
+PAGES_BUILD=1 npx next build   # outputs out/ (basePath=/lumen-watch-site)
 ```
 
-`gh-pages` 分支即為靜態匯出結果，由 GitHub Pages 服務。
+The `gh-pages` branch holds the static export served by GitHub Pages.
 
-## 相關 Repo
+## Related repositories
 
-- 🛠️ [xiaozhi-agent-platform](https://github.com/jiapunk/xiaozhi-agent-platform) — 手錶的完整實作平台（ESP32-S3 韌體 + Go Gateway + Companion App）
-- 📘 [xiaozhi-esp-claw-blueprint](https://github.com/jiapunk/xiaozhi-esp-claw-blueprint) — 產品化藍圖
+- 🛠️ [xiaozhi-agent-platform](https://github.com/jiapunk/xiaozhi-agent-platform) — the watch's full implementation platform (ESP32-S3 firmware + Go gateway + companion app)
+- 📘 [xiaozhi-esp-claw-blueprint](https://github.com/jiapunk/xiaozhi-esp-claw-blueprint) — the product blueprint
 
 ---
 
