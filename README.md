@@ -9,7 +9,7 @@
 自然對話、即時資訊、裝置控制與個人記憶 ——
 以一個溫暖安靜的介面，讓 ESP32 手錶成為隨身的行動 Agent。
 
-[![Live](https://img.shields.io/badge/─_互動展示_線上直播-jiapunk.github.io%2Flumen--watch--site-2EA043?logo=github)](https://jiapunk.github.io/lumen-watch-site/)
+[![Live](https://img.shields.io/badge/互動展示_線上直播-jiapunk.github.io%2Flumen--watch--site-2EA043?logo=github)](https://jiapunk.github.io/lumen-watch-site/)
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
